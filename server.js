@@ -37,6 +37,9 @@ app.get('/rsc', async (c) => {
 	const Page = await import('./build/page.js');
 	const Comp = createElement(Page.default);
 
+	// Streams are a browser standard, so you can retrun a web standard response object 
+	// and your browser will know to keep fetching new stream results
+	// Try: curl http://localhost:3000/rsc
 	const stream = ReactServerDom.renderToReadableStream(Comp);
 	return new Response(stream);
 });
