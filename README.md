@@ -51,4 +51,9 @@ createFromNodeStream(passthrough).then(console.log)
 // }
 ```
 
-> When the client receives response, it uses the `react-server-dom-webpack` library to parse the special format. When it encounters 'J' (server component), it deserializes the JSON to get an actual component; when it encounters 'M' (client component), it executes `webpack_require` at runtime to reference static resources.
+## The RSC wire format
+How do you turn this RSC stream into actual React elements in your browser? `react-server-dom-webpack` contains the entrypoints that takes the RSC response and re-creates the React element tree.
+
+When the client receives response, it uses the `react-server-dom-webpack/client` library to parse the special format. When it encounters 'J' (JSON-serialized server component), it deserializes the JSON to get an actual component; when it encounters 'M' (client component module references), it executes `webpack_require` at runtime to reference static resources.
+
+This format is very streamable — as soon as the client has read a whole row, it can parse a snippet of JSON and make some progress. If the server had encountered suspense boundaries while rendering, you would see multiple 'J' lines corresponding to each chunk as it gets resolved.
