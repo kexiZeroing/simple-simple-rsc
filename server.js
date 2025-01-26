@@ -35,6 +35,8 @@ app.get('/', async (c) => {
  */
 app.get('/rsc', async (c) => {
 	const Page = await import('./build/page.js');
+	// React.createElement is a legacy API
+	// Implement yourself: https://github.com/TejasQ/react-server-components-from-scratch/blob/spoild/server.tsx#L37
 	const Comp = createElement(Page.default);
 
 	// Streams are a browser standard, so you can retrun a web standard response object 
