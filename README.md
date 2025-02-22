@@ -1,6 +1,6 @@
 # Simple RSC from scratch
 
-Learn from https://www.youtube.com/watch?v=MaebEqhZR84
+Learn from https://www.youtube.com/watch?v=MaebEqhZR84. Tejas Kumar's video https://www.youtube.com/watch?v=F83wMYl9GWM&t=487s is also a good one.
 
 This code is a rather simple version, and only contains the first part without handling client components.
 
